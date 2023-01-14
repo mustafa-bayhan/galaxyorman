@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+
+	<!-- title -->
+	<title>Duyurular - GALAXY</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="/media/image/img/icon-web.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="/static/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="/static/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="/static/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="/static/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="/static/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="/static/css/responsive.css">
+
+</head>
+<body>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	<!-- header -->
+	<div class="top-header-area js-bottom" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="/">
+								<img src="/media/image/logo.png" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li ><a href="/">Ana Sayfa</a></li>
+								<li><a href="/about-us">Hakkımızda</a>
+								</li>
+
+								<li><a href="#">Ürünler</a>
+									<ul class="sub-menu">
+										{% for prod in product_3 %}
+										<li><a href="/products/{{prod.slug}}">{{prod.name}}</a></li>
+										{%endfor%}
+									</ul>
+								</li>
+								
+								<li class="current-list-item"><a href="/news">Duyurular</a></li>
+								<li><a href="/contact-us">İletişim</a></li>
+								
+								<li>
+									<div class="header-icons">
+										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
+										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-twitter"></i></a>
+										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg js-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>HABERLER VE DUYURULAR</p>
+						<h1>DUYURULAR</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- latest news -->
+	<div class="latest-news mt-150 mb-150 js-top">
+		<div class="container">
+			<div class="row">
+				{% for post in page %}
+				<div class="col-lg-4 col-md-6" style="padding: 0 10px; margin-bottom: -70px;">
+					<div class="cardd">
+						<img
+						  src="{{post.image.url}}" alt=""
+						/>
+						<div class="content">
+						  <h2 style="color: rgba(255, 255, 255, 0.973); font-size: 23px; line-height: 1em;">{{post.title}}</h2><br>
+						  <i class="fas fa-user"></i> {{post.author}} &nbsp;
+						  <i class="fas fa-calendar"></i> {{post.date_for_news}}
+						
+						  <p style="color: rgba(255, 255, 255, 0.712); font-size: 14px;">
+							{{post.summary}}
+							<button><a href="/news/{{post.slug}}" style="color: rgba(255, 255, 255, 0.836);">Detaylı incele <i class="fas fa-angle-right"></i></a> </button>
+						  </p>
+						</div>
+					  </div>
+				
+				</div>
+				{% endfor %}
+				
+				
+				
+
+
+
+				
+			
+		</div>
+		<div class="container" style="margin: 30px 0;">
+			<div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center"  style="margin: auto; padding: 0;">
+							<div class="pagination-wrap">
+								<ul>
+									{% if page.has_previous %}
+									<li><a href="?page={{ page.previous_page_number }}{% if request.GET.date %}&date={{ request.GET.date }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Önceki</a></li>
+									{% else %}
+									<li><a>Önceki</a></li>
+									{% endif %}
+									{% if first %}
+									<li><a href="?page=1{% if request.GET.date %}&date={{ request.GET.date }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">1</a></li>
+									{% endif %}
+									{% if three_dot %}
+									<li><a>...</a></li>
+									{%endif%}
+									{% if page.has_previous %}
+									<li><a href="?page={{ page.previous_page_number }}{% if request.GET.date %}&date={{ request.GET.date }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{ page.previous_page_number }}</a></li>
+									{%endif%}
+									<li><a class="active">{{page.number}}</a></li>
+									{% if page.has_next %}
+									<li><a href="?page={{ page.next_page_number }}{% if request.GET.date %}&date={{ request.GET.date }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{ page.next_page_number }}</a></li>
+									{% endif %}
+									{% if last_three %}
+									<li><a>...</a></li>
+									{% endif %}
+									{% if last %}
+									<li><a href="?page={{page.paginator.num_pages}}{% if request.GET.date %}&date={{ request.GET.date }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{page.paginator.num_pages}}</a></li>
+									{% endif %}
+									{% if page.has_next %}
+									<li><a href="?page={{ page.next_page_number }}{% if request.GET.date %}&date={{ request.GET.date }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Sonraki</a></li>
+									{% else %}
+									<li><a>Sonraki</a></li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
+
+	
+
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">Hakkımızda</h2>
+						{{about_con.about_text|safe}}
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Bize Ulaşın</h2>
+						<ul>
+							<li>Cumhuriyet, Sakarya Cd. No:1, 06430 Çankaya/Ankara</li>
+							<li>+90 561 617 64 49</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Gezinti</h2>
+						<ul>
+							<li><a href="/">Ana Sayfa</a></li>
+							<li><a href="/about-us">Kurumsal</a></li>
+							<li><a href="/news">Duyurular</a></li>
+							<li><a href="/contact-us">İletişim</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Bizi Takip Edin</h2>
+						<ul>
+							<li><a href="#" target="_blank">Facebook</a></li>
+							<li><a href="#" target="_blank">Twitter</a></li>
+							<li><a href="#" target="_blank">Instagram</a></li>
+							<li><a href="#" target="_blank">LinkedIn</a></li>
+							<li><a href="#" target="_blank">TikTok</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+	
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Galaxy Orman Ürünleri Sanayi ve Ticaret Limited Şirketi &copy; 2022  |  <a href="https://tetasoftware.com"><img src="/media/image/teta-logo-2.png" alt="teta" width="60px"></a></p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end copyright -->
+	
+	<script src="https://kit.fontawesome.com/20583e3abd.js" crossorigin="anonymous"></script>
+	<!-- jquery -->
+	<script src="/static/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="/static/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="/static/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="/static/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="/static/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="/static/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="/static/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="/static/js/sticker.js"></script>
+	<!-- main js -->
+	<script src="/static/js/main.js"></script>
+	<script src="https://unpkg.com/scrollreveal"></script>
+	<script>
+		window.sr=ScrollReveal();
+  sr.reveal(".js-left",{
+      origin: "left",
+      duration:1000,
+      distance:"2rem",
+      delay:300,
+  })
+  sr.reveal(".js-right",{
+      origin: "right",
+      duration:1000,
+      distance:"2rem",
+      delay:300,
+  })
+  sr.reveal(".js-top",{
+      origin: "bottom",
+      duration:1000,
+      distance:"2rem",
+      delay:300,
+  })
+  sr.reveal(".js-bottom",{
+      origin: "top",
+      duration:1000,
+      distance:"2rem",
+      delay:300,
+  })
+
+	</script>
+</body>
+</html>
