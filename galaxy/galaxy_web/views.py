@@ -33,6 +33,30 @@ def index(request):
         
     return render(request,'index.html',context)
 
+
+def en(request):
+    context={}
+    context['ref']=Reference.objects.all()
+    context['last_newss']=News_en.objects.all().order_by('-publishing_date')[:3]
+    context['product_33']=Product_en.objects.all().order_by('-publishing_date')[:3]
+    disc = Discount_Product_en.objects.all()
+    images = Cover_image.objects.all()
+    if len(images) > 0:
+        context['images'] = images[0]
+    if len(disc) > 0:
+        context['discountt']=disc[0]
+        
+    about = About_en.objects.all().distinct()
+    if not len(about) == 0:
+        context['about_conn'] = about[0]
+        
+    bulk_order = Bulk_Order_Product_en.objects.all().distinct()   
+    if not len(bulk_order) == 0:
+        context['bulk_order'] = bulk_order[0]
+        
+    return render(request,'en.html',context)
+
+
 def about(request):
     context2={}
     
@@ -43,6 +67,21 @@ def about(request):
     context2['staff'] = Team_Member.objects.all()
     context2['product_3']=Product.objects.all().order_by('-publishing_date')[:3]
     return render(request,'about.html',context2)
+
+
+def about_en(request):
+    context2={}
+    
+    about = About_en.objects.all().distinct()
+    if not len(about) == 0:
+        context2['about_conn'] = about[0]
+        
+    context2['stafff'] = Team_Member_en.objects.all()
+    context2['product_33']=Product_en.objects.all().order_by('-publishing_date')[:3]
+    return render(request,'about-en.html',context2)
+
+
+
 
 def contact(request):
     context3={}
@@ -87,6 +126,49 @@ def contact(request):
     return render(request,'contact.html',context3)
 
 
+def contact_en(request):
+    context3={}
+    about = About.objects.all().distinct()
+    if not len(about) == 0:
+        context3['about_con'] = about[0]
+    if request.method=="POST":
+        
+        username=request.POST.get('name')
+        mail=request.POST.get('email')
+        number=request.POST.get('tel')
+        comment=request.POST.get('message')
+        subject=request.POST.get('subject')
+        result = int(request.POST.get('a')) + int(request.POST.get('b'))
+        if result == int(request.POST.get('result')):
+        
+            make_comment = Connection.objects.create(Name=username,mail=mail, tel=number, Content=comment,Subject=subject)
+            make_comment.save()
+            
+        else:
+            a = random.randint(1,100)
+            b = random.randint(1,10)
+            context3['a']=a
+            context3['b']=b
+            context3['username']=username
+            context3['email']=mail
+            context3['tel']=number
+            context3['message']=comment
+            context3['konu']=subject
+            context3['error'] = 'Incorrect sum result! Enter the correct result!'
+            return render(request,'contact-en.html',context3)
+            
+            
+    a = random.randint(1,100)
+    b = random.randint(1,10)
+    context3['a']=a
+    context3['b']=b
+    context3['product_33']=Product_en.objects.all().order_by('-publishing_date')[:3]
+    
+        
+    
+    return render(request,'contact-en.html',context3)
+
+
 def news(request):
     context4={}
     context4['product_3']=Product.objects.all().order_by('-publishing_date')[:3]
@@ -107,7 +189,7 @@ def news(request):
         ).distinct()
     
     """   paginator start  """
-    paginator = Paginator(posts,61) # bir sayfada kaç tane görünmesi gerek
+    paginator = Paginator(posts, 6) # bir sayfada kaç tane görünmesi gerek
     context4['filter_count']=paginator.count
     page_num = request.GET.get('page')
     page=paginator.get_page(page_num)
@@ -143,6 +225,64 @@ def news(request):
     """   paginator end  """
 
     return render(request,'news.html',context4)
+
+def news_en(request):
+    context4={}
+    context4['product_33']=Product_en.objects.all().order_by('-publishing_date')[:3]
+    about = About_en.objects.all().distinct()
+    if not len(about) == 0:
+        context4['about_conn'] = about[0]
+    posts=News_en.objects.filter(Q(completed__iexact='completed')).order_by('-publishing_date').distinct()
+    date_search=request.GET.get('date')
+    category_search=request.GET.get('category')
+    if date_search:
+        posts= posts.filter(
+             Q(date__exact=date_search)
+        ).distinct()
+        
+    if category_search:
+        posts= posts.filter(
+             Q(category__name__exact=category_search)
+        ).distinct()
+    
+    """   paginator start  """
+    paginator = Paginator(posts, 6) # bir sayfada kaç tane görünmesi gerek
+    context4['filter_count']=paginator.count
+    page_num = request.GET.get('page')
+    page=paginator.get_page(page_num)
+    
+    context4['count']=paginator.count
+    context4['page'] = page  
+    page_number=page.number
+
+    if page_number !=None:
+        fark=int(paginator.num_pages) - int(page_number)
+       
+        if fark >= 2:
+            context4['last'] = ('last')
+            if fark > 2:
+                context4['last_three'] = ('last_three')
+                
+            
+        if int(page_number) >= 3:
+            context4['first'] = ('first')
+            
+            if int(page_number) > 3:
+                context4['three_dot'] = ('three_dot')
+            
+    else:
+
+        
+        if paginator.num_pages-1 >= 2:
+            context4['last_true'] = ('last')
+            if paginator.num_pages-1 >2:
+                
+                context4['last_three'] = ('last_three')
+    
+    """   paginator end  """
+
+    return render(request,'news-en.html',context4)
+
 
 
 def single_news(request, slug):
@@ -205,6 +345,68 @@ def single_news(request, slug):
     return render(request,'single-news.html',context5)
 
 
+
+def single_news_en(request, slug):
+    context5={}
+    the_newss=get_object_or_404(News_en, slug=slug)
+    about = About_en.objects.all().distinct()
+    if not len(about) == 0:
+        context5['about_con'] = about[0]
+    date_arşiv = []
+    archives = []
+    context5['the_newss']=the_newss
+    context5['news']=News_en.objects.all()
+    
+    for i in News_en.objects.filter(Q(completed__iexact='completed')).order_by('-publishing_date').distinct():
+        if i.date not in date_arşiv:
+            date_arşiv.append(i.date)
+    
+    for i in date_arşiv:
+        postss = News_en.objects.filter(date = i)
+        archives  += [[i,len(postss)]]
+            
+
+    context5['archive']=archives
+    context5['last_news']=News_en.objects.filter(Q(completed__iexact='completed')).order_by('-publishing_date').distinct()[:5]
+    context5['product_33']=Product_en.objects.all().order_by('-publishing_date')[:3]
+    context5['cat']=News_Category_en.objects.all()
+    """ comment """
+    
+    if request.method=="POST":
+        
+        username=request.POST.get('name')
+        mail=request.POST.get('email')
+        comment=request.POST.get('comment')
+        result = int(request.POST.get('a')) + int(request.POST.get('b'))
+        if result == int(request.POST.get('result')):
+        
+            make_comment = Comments_en.objects.create(post = the_newss, name=username, email=mail, content=comment)
+            make_comment.save()
+            
+        else: 
+            a = random.randint(1,100)
+            b = random.randint(1,10)
+            context5['a']=a
+            context5['b']=b
+            context5['username']=username
+            context5['email']=mail
+            context5['message']=comment
+            context5['error'] = 'Incorrect sum result! Enter the correct result!'
+            return render(request,'single-news-en.html',context5)
+            
+            
+    a = random.randint(1,100)
+    b = random.randint(1,10)
+    context5['a']=a
+    context5['b']=b
+    
+    
+    """ comment end """
+    
+    return render(request,'single-news-en.html',context5)
+
+
+
 def single_product(request, slug):
     context6={}
     about = About.objects.all().distinct()
@@ -214,6 +416,16 @@ def single_product(request, slug):
     context6['allproducts']=Product.objects.all().order_by('-publishing_date')[:3]
     return render(request,'single-product.html',context6)
 
+
+
+def single_product_en(request, slug):
+    context6={}
+    about = About_en.objects.all().distinct()
+    if not len(about) == 0:
+        context6['about_conn'] = about[0]
+    context6['the_productt']=get_object_or_404(Product_en, slug=slug)
+    context6['allproductss']=Product_en.objects.all().order_by('-publishing_date')[:3]
+    return render(request,'single-product-en.html',context6)
 
 
 def handle_not_found(request, exception):

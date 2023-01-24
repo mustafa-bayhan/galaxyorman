@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +41,6 @@
 						<!-- logo -->
 						<div class="site-logo">
 							<a href="/">
-								
 								<img src="/media/image/logo.png" alt="">
 							</a>
 						</div>
@@ -50,20 +49,26 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="/">Ana Sayfa</a></li>
-								<li><a href="/about-us">Hakkımızda</a></li>
-
+								<li class="current-list-item" ><a href="/">Ana Sayfa</a></li>
+								<li><a href="/hakkimizda">Hakkımızda</a>
+								</li>
 								<li><a href="#">Ürünler</a>
 									<ul class="sub-menu">
 										{% for prod in product_3 %}
-										<li><a href="/products/{{prod.slug}}">{{prod.name}}</a></li>
+										<li><a href="/urunler/{{prod.slug}}">{{prod.name}}</a></li>
 										{%endfor%}
 									</ul>
 								</li>
 								
-								<li><a href="/news">Duyurular</a></li>
-								<li><a href="/contact-us">İletişim</a></li>
+								<li><a href="/duyurular">Duyurular</a></li>
+								<li><a href="/iletisim">İletişim</a></li>
+								<li>
+									<div class="flags" style="display: flex;">
+										<a href="/"><img src="/media/image/trbayrak.png" width="20px" alt=""></a>
+										<a href="/en"><img src="/media/image/enbayrak.png" width="20px" alt=""></a>
 
+									</div>
+								</li>
 								<li>
 									<div class="header-icons">
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -71,6 +76,7 @@
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 									</div>
 								</li>
+								
 							</ul>
 						</nav>
 						<div class="mobile-menu"></div>

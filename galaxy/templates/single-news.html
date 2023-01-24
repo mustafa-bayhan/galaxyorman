@@ -43,7 +43,7 @@
     <!--PreLoader Ends-->
 	
 	<!-- header -->
-	<div class="top-header-area" id="sticker">
+	<div class="top-header-area js-bottom" id="sticker">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-sm-12 text-center">
@@ -59,21 +59,26 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li><a href="/">Ana Sayfa</a></li>
-								<li><a href="/about-us">Hakkımızda</a>
+								<li ><a href="/">Ana Sayfa</a></li>
+								<li><a href="/hakkimizda">Hakkımızda</a>
 								</li>
-
 								<li><a href="#">Ürünler</a>
 									<ul class="sub-menu">
 										{% for prod in product_3 %}
-										<li><a href="/products/{{prod.slug}}">{{prod.name}}</a></li>
+										<li><a href="/urunler/{{prod.slug}}">{{prod.name}}</a></li>
 										{%endfor%}
 									</ul>
 								</li>
 								
-								<li class="current-list-item"><a href="/news">Duyurular</a></li>
-								<li><a href="/contact-us">İletişim</a></li>
-								
+								<li  class="current-list-item"><a href="/duyurular">Duyurular</a></li>
+								<li><a href="/iletisim">İletişim</a></li>
+								<li>
+									<div class="flags" style="display: flex;">
+										<a href="/"><img src="/media/image/trbayrak.png" width="20px" alt=""></a>
+										<a href="/en"><img src="/media/image/enbayrak.png" width="20px" alt=""></a>
+
+									</div>
+								</li>
 								<li>
 									<div class="header-icons">
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -83,7 +88,6 @@
 								</li>
 							</ul>
 						</nav>
-						
 						<div class="mobile-menu"></div>
 						<!-- menu end -->
 					</div>

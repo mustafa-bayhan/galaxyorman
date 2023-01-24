@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,18 +52,25 @@
 						<nav class="main-menu">
 							<ul>
 								<li ><a href="/">Ana Sayfa</a></li>
-								<li class="current-list-item"><a href="/about-us">Hakkımızda</a>
+								<li  class="current-list-item"><a href="/hakkimizda">Hakkımızda</a>
 								</li>
 								<li><a href="#">Ürünler</a>
 									<ul class="sub-menu">
 										{% for prod in product_3 %}
-										<li><a href="/products/{{prod.slug}}">{{prod.name}}</a></li>
+										<li><a href="/urunler/{{prod.slug}}">{{prod.name}}</a></li>
 										{%endfor%}
 									</ul>
 								</li>
 								
-								<li><a href="/news">Duyurular</a></li>
-								<li><a href="/contact-us">İletişim</a></li>
+								<li><a href="/duyurular">Duyurular</a></li>
+								<li><a href="/iletisim">İletişim</a></li>
+								<li>
+									<div class="flags" style="display: flex;">
+										<a href="/hakkimizda"><img src="/media/image/trbayrak.png" width="20px" alt=""></a>
+										<a href="/about-us"><img src="/media/image/enbayrak.png" width="20px" alt=""></a>
+	
+									</div>
+								</li>
 								<li>
 									<div class="header-icons">
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -81,8 +88,6 @@
 		</div>
 	</div>
 	<!-- end header -->
-
-	
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg js-bottom">

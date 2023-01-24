@@ -60,20 +60,25 @@
 						<nav class="main-menu">
 							<ul>
 								<li ><a href="/">Ana Sayfa</a></li>
-								<li><a href="/about-us">Hakkımızda</a>
+								<li><a href="/hakkimizda">Hakkımızda</a>
 								</li>
-
 								<li><a href="#">Ürünler</a>
 									<ul class="sub-menu">
 										{% for prod in product_3 %}
-										<li><a href="/products/{{prod.slug}}">{{prod.name}}</a></li>
+										<li><a href="/urunler/{{prod.slug}}">{{prod.name}}</a></li>
 										{%endfor%}
 									</ul>
 								</li>
 								
-								<li class="current-list-item"><a href="/news">Duyurular</a></li>
-								<li><a href="/contact-us">İletişim</a></li>
-								
+								<li class="current-list-item" ><a href="/duyurular">Duyurular</a></li>
+								<li ><a href="/iletisim">İletişim</a></li>
+								<li>
+									<div class="flags" style="display: flex;">
+										<a href="/duyurular"><img src="/media/image/trbayrak.png" width="20px" alt=""></a>
+										<a href="/news"><img src="/media/image/enbayrak.png" width="20px" alt=""></a>
+
+									</div>
+								</li>
 								<li>
 									<div class="header-icons">
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -91,7 +96,6 @@
 		</div>
 	</div>
 	<!-- end header -->
-
 	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg js-bottom">
@@ -125,7 +129,7 @@
 						
 						  <p style="color: rgba(255, 255, 255, 0.712); font-size: 14px;">
 							{{post.summary}}
-							<button><a href="/news/{{post.slug}}" style="color: rgba(255, 255, 255, 0.836);">Detaylı incele <i class="fas fa-angle-right"></i></a> </button>
+							<button><a href="/duyurular/{{post.slug}}" style="color: rgba(255, 255, 255, 0.836);">Detaylı incele <i class="fas fa-angle-right"></i></a> </button>
 						  </p>
 						</div>
 					  </div>
