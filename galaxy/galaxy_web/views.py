@@ -107,7 +107,7 @@ def news(request):
         ).distinct()
     
     """   paginator start  """
-    paginator = Paginator(posts, 1) # bir sayfada kaç tane görünmesi gerek
+    paginator = Paginator(posts,61) # bir sayfada kaç tane görünmesi gerek
     context4['filter_count']=paginator.count
     page_num = request.GET.get('page')
     page=paginator.get_page(page_num)
