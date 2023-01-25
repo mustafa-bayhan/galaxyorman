@@ -80,7 +80,7 @@ class News_Category_en(models.Model):
     
 class News (models.Model):
     title=models.CharField(null= True, max_length=200)
-    image = models.ImageField(null=True, upload_to='image/', validators=[file_size])
+    image = models.ImageField(null=True, upload_to='image/',validators=[file_size])
     category = models.ForeignKey(News_Category, on_delete= models.PROTECT, related_name='Category',null= True)
     publishing_date =models.DateTimeField(verbose_name='Yayınlanma Tarihi', auto_now_add=True, null= True )
     completed=models.CharField(choices=CHOICES2,default='completed',max_length=200)
