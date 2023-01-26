@@ -577,3 +577,9 @@
 	    display: block;
 	}
 }
+
+@media (max-width:977px){
+	.kizilay{
+		margin-top: 40px;
+	}
+}

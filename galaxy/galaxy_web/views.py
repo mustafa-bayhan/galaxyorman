@@ -130,7 +130,7 @@ def contact_en(request):
     context3={}
     about = About.objects.all().distinct()
     if not len(about) == 0:
-        context3['about_con'] = about[0]
+        context3['about_conn'] = about[0]
     if request.method=="POST":
         
         username=request.POST.get('name')
@@ -351,7 +351,7 @@ def single_news_en(request, slug):
     the_newss=get_object_or_404(News_en, slug=slug)
     about = About_en.objects.all().distinct()
     if not len(about) == 0:
-        context5['about_con'] = about[0]
+        context5['about_conn'] = about[0]
     date_arşiv = []
     archives = []
     context5['the_newss']=the_newss

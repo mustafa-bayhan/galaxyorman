@@ -103,8 +103,8 @@
 								<p class="subtitle">GÜVENİLİRLİK</p>
 								<h1>A KALİTE ÜRÜNLER</h1>
 								<div class="hero-btns">
-									<a href="/about-us" class="boxed-btn">Hakkımızda</a>
-									<a href="/contact-us" class="bordered-btn">Hemen Teklif Al</a>
+									<a href="/hakkimizda" class="boxed-btn">Hakkımızda</a>
+									<a href="/iletisim" class="bordered-btn">Hemen Teklif Al</a>
 								</div>
 							</div>
 						</div>
@@ -123,8 +123,8 @@
 								<p class="subtitle">FİYAT / PERFORMANS</p>
 								<h1>A KALİTE ÜRÜNLER</h1>
 								<div class="hero-btns">
-									<a href="/about-us" class="boxed-btn">Hakkımızda</a>
-									<a href="/contact-us" class="bordered-btn">Hemen Teklif Al</a>
+									<a href="/hakkimizda" class="boxed-btn">Hakkımızda</a>
+									<a href="/iletisim" class="bordered-btn">Hemen Teklif Al</a>
 								</div>
 							</div>
 						</div>
@@ -143,8 +143,8 @@
 								<p class="subtitle">KALİTE</p>
 								<h1>A KALİTE ÜRÜNLER</h1>
 								<div class="hero-btns">
-									<a href="/about-us" class="boxed-btn">Hakkımızda</a>
-									<a href="/contact-us" class="bordered-btn">Hemen Teklif Al</a>
+									<a href="/hakkimizda" class="boxed-btn">Hakkımızda</a>
+									<a href="/iletisim" class="bordered-btn">Hemen Teklif Al</a>
 								</div>
 							</div>
 						</div>
@@ -213,7 +213,7 @@
 						<p class="top-sub">HAKKIMIZDA</p>
 						<h2><span class="orange-text">Galaxy</span> nedir?</h2>
 						{{about_con.about_text|safe}}
-						<a href="/about-us" class="boxed-btn mt-4">Daha fazla</a>
+						<a href="/hakkimizda" class="boxed-btn mt-4">Daha fazla</a>
 					</div>
 				</div>
 			</div>
@@ -227,7 +227,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title" style="margin-bottom: 40px;">	
 						<h3><span class="orange-text">Harika</span> Ürünlerimiz</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+						<p>A kalite ürünlerimiz %100 Galaxy güvencesi ile sizlerle</p>
 					</div>
 				</div>
 			</div>
@@ -246,9 +246,9 @@
 					<h3>{{urun.price}} TL ({{urun.amount}})</h3><br>
 					
 				  </div>
-				  <h3 style="font-size: 16px;"><a href="/products/{{urun.slug}}" style="color:#0DA3A8">Ürün detayı</a></h3>
+				  <h3 style="font-size: 16px;"><a href="/urunler/{{urun.slug}}" style="color:#0DA3A8">Ürün detayı</a></h3>
   
-				  <a class="ca" href="/contact-us">Sipariş  <i class="fas fa-angle-right"></i></a>
+				  <a class="ca" href="/iletisim">Sipariş  <i class="fas fa-angle-right"></i></a>
 				</div>
 			  </div>
 			{% endfor %}
@@ -317,7 +317,7 @@
 						</div>
 					</div>
 				</div>
-                	<a href="/contact-us" class="cart-btn mt-3">Hemen teklif al <i class="fas fa-angle-right"></i></a>
+                	<a href="/iletisim" class="cart-btn mt-3">Hemen teklif al <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -398,7 +398,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
 						<h3><span class="orange-text">Duyurular</span></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+						<p>Şirketimizle ilgili haberleri ve duyuruları inceleyin</p>
 					</div>
 				</div>
 			</div>
@@ -418,7 +418,7 @@
 						
 						  <p style="color: rgba(255, 255, 255, 0.712); font-size: 14px;">
 							{{news.summary}}
-							<button><a href="/news/{{news.slug}}" style="color: rgba(255, 255, 255, 0.836);">Detaylı incele <i class="fas fa-angle-right"></i></a> </button>
+							<button><a href="/duyurular/{{news.slug}}" style="color: rgba(255, 255, 255, 0.836);">Detaylı incele <i class="fas fa-angle-right"></i></a> </button>
 						  </p>
 						</div>
 					  </div>
@@ -432,7 +432,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<a href="/news" class="boxed-btn">Tüm Duyurular</a>
+					<a href="/duyurular" class="boxed-btn">Tüm Duyurular</a>
 				</div>
 			</div>
 		</div>
@@ -453,7 +453,7 @@
 					<!--Countdown Timer-->
 					
 				
-					<a href="/contact-us" class="cart-btn mt-3" style="color:#fff">Hemen teklif al <i class="fas fa-angle-right"></i></a>
+					<a href="/iletisim" class="cart-btn mt-3" style="color:#fff">Hemen teklif al <i class="fas fa-angle-right"></i></a>
 				</div>
 				<div class="image-column col-lg-6 js-top">
 					<div class="image">
@@ -590,9 +590,9 @@
 						<h2 class="widget-title">Gezinti</h2>
 						<ul>
 							<li><a href="/">Ana Sayfa</a></li>
-							<li><a href="/about-us">Kurumsal</a></li>
-							<li><a href="/news">Duyurular</a></li>
-							<li><a href="/contact-us">İletişim</a></li>
+							<li><a href="/hakkimizda">Kurumsal</a></li>
+							<li><a href="/duyurular">Duyurular</a></li>
+							<li><a href="/iletisim">İletişim</a></li>
 						</ul>
 					</div>
 				</div>
@@ -618,7 +618,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Galaxy Orman Ürünleri Sanayi ve Ticaret Limited Şirketi &copy; 2022  |  <a href="https://tetasoftware.com"><img src="/media/image/teta-logo-2.png" alt="teta" width="60px"></a></p>
+					<p>Galaxy Orman Ürünleri Sanayi ve Ticaret Limited Şirketi &copy; 2023  |  <a href="https://tetasoftware.com" target="_blank"><img src="/media/image/teta-logo-2.png" alt="teta" width="60px"></a></p>
 				</div>
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">
