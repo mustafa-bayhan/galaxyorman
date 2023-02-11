@@ -50,7 +50,7 @@
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="/">
+							<a href="/tr">
 								<img src="/media/image/logo.png" alt="">
 							</a>
 						</div>
@@ -59,7 +59,7 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li ><a href="/">Ana Sayfa</a></li>
+								<li ><a href="/tr">Ana Sayfa</a></li>
 								<li><a href="/hakkimizda">Hakkımızda</a>
 								</li>
 								<li><a href="#">Ürünler</a>
@@ -74,8 +74,8 @@
 								<li><a href="/iletisim">İletişim</a></li>
 								<li>
 									<div class="flags" style="display: flex;">
-										<a href="/"><img src="/media/image/trbayrak.png" width="20px" alt=""></a>
-										<a href="/en"><img src="/media/image/enbayrak.png" width="20px" alt=""></a>
+										<a href="/tr"><img src="/media/image/trbayrak.png" width="20px" alt=""></a>
+										<a href="/"><img src="/media/image/enbayrak.png" width="20px" alt=""></a>
 
 									</div>
 								</li>
@@ -184,7 +184,7 @@
 							<h4>Son Duyurular ve Haberler</h4>
 							<ul>
 								{% for last_new in last_news %}
-								    <li><a href="/news/{{last_new.slug}}">{{last_new.title}}</a></li>
+								    <li><a href="/duyurular/{{last_new.slug}}">{{last_new.title}}</a></li>
 								{%endfor%}
 							</ul>
 						</div>
@@ -192,7 +192,7 @@
 							<h4>Arşiv</h4>
 							<ul>
 								{% for date in archive %}
-								    <li><a href="/news?date={{date.0}}">{{date.0}} ({{date.1}}) </a></li>
+								    <li><a href="/duyurular?date={{date.0}}">{{date.0}} ({{date.1}}) </a></li>
 									
 								{% endfor %}
 							</ul>
@@ -201,7 +201,7 @@
 							<h4>Etiketler</h4>
 							<ul>
 								{%for cate in cat %}
-								<li><a href="/news?category={{cate.name}}">{{cate.name}}</a></li>
+								<li><a href="/duyurular?category={{cate.name}}">{{cate.name}}</a></li>
 								{%endfor%}
 							</ul>
 						</div>
@@ -236,7 +236,7 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Gezinti</h2>
 						<ul>
-							<li><a href="/">Ana Sayfa</a></li>
+							<li><a href="/tr">Ana Sayfa</a></li>
 							<li><a href="/about-us">Kurumsal</a></li>
 							<li><a href="/news">Duyurular</a></li>
 							<li><a href="/contact-us">İletişim</a></li>
